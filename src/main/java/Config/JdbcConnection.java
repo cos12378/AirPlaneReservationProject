@@ -14,8 +14,8 @@ public class JdbcConnection {
     //private final String url = "jdbc:mysql://localhost:3306/airplane" + "?serverTimezone=Asia/Seoul&characterEncoding=UTF-8";
 
     private final String root = "root";
-    private final  String pw = "hyun2002";
-
+    //private final  String pw = "hyun2002";
+    private final String pw = "1q2w3e4r!!";
     public Connection getJdbc(){
 
         Connection conn;
