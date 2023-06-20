@@ -24,11 +24,11 @@ public class ModuleManager {
     }
 
     public void start(){
-        while (true){
-
-            //현제 모듈 start 실행
-            nowModule.start();
-        }
+//        while (true){
+//
+//            //현제 모듈 start 실행
+//            nowModule.start();
+//        }
     }
 
     public void changeModule(ModuleType type){
@@ -57,5 +57,33 @@ public class ModuleManager {
 
     public ModuleType getNowModuleType(){
         return nowModule.getModuleType();
+    }
+
+    public MainModule getMainModuleByNowMobule(){
+        if (getNowModuleType() == ModuleType.MAIN)
+            return (MainModule) nowModule;
+        else
+            return null;
+    }
+
+    public LoginModule getLoginModuleByNowMobule(){
+        if (getNowModuleType() == ModuleType.LOGIN)
+            return (LoginModule) nowModule;
+        else
+            return null;
+    }
+
+    public ReservationModule getReservationModuleByNowMobule(){
+        if (getNowModuleType() == ModuleType.RESERVATION)
+            return (ReservationModule) nowModule;
+        else
+            return null;
+    }
+
+    public EditModule getEditModuleByNowMobule(){
+        if (getNowModuleType() == ModuleType.EDIT)
+            return (EditModule) nowModule;
+        else
+            return null;
     }
 }

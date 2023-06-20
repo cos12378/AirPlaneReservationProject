@@ -7,6 +7,7 @@ import java.io.IOException;
 public class MainServlet extends HttpServlet{
     @Override
     public void init() throws ServletException {
+        //main 진입 시 모듈 메니저 초기화
         ModuleManager.getInstance().initModuleManager();
         super.init();
     }
@@ -18,6 +19,7 @@ public class MainServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         super.doPost(req, resp);
     }
 }
