@@ -18,4 +18,14 @@
     <url-pattern>/main</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>ReservationServlet</servlet-name>
+    <servlet-class>Servlet.ReservationServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ReservationServlet</servlet-name>
+    <url-pattern>/reservation</url-pattern>
+  </servlet-mapping>
+
 </web-app>
