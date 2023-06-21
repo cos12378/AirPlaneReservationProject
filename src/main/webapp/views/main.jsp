@@ -27,6 +27,8 @@
     if (isLogin) {%>
 <a href="/reservation">예약</a>
 <br>
+<a href="/ticket">티켓</a>
+<br>
 <%
 } else if (isLogin == true && loginID.isEmpty() == false
         && loginID.equals("admin")) { %>
@@ -37,6 +39,8 @@
 <a href="/signup">회원가입</a>
 <br>
 <a href="/reservation">예약</a>
+<br>
+<a href="/ticket">티켓</a>
 <%
     }
 %>

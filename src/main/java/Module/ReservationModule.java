@@ -48,7 +48,7 @@ public class ReservationModule extends ModuleBase {
                 break;
             case 3:
                 //todo 티켓 확인
-                getMyTickets_by_Database();
+//                getMyTickets_by_Database();
                 break;
             case 0:
                 ModuleManager.getInstance().changeModule(ModuleType.MAIN);
@@ -191,7 +191,7 @@ public class ReservationModule extends ModuleBase {
 //        }
     }
 
-    private void getMyTickets_by_Database() {
+    public List<Ticket> getMyTickets_by_Database(String userID) {
         //비행기 목록 clear
         ticketList.clear();
 
@@ -201,7 +201,7 @@ public class ReservationModule extends ModuleBase {
         try {
 
             PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setString(1, DataManager.getInstance().getUser().getUserID());
+            pst.setString(1, userID);
 
             ResultSet rst = pst.executeQuery();
 
@@ -238,6 +238,7 @@ public class ReservationModule extends ModuleBase {
         } else {
             showTicketList();
         }
+        return ticketList;
     }
 
     public List<Seat> getSeats_by_Database(String airplaneName) {

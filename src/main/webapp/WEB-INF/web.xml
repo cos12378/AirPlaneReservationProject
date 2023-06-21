@@ -28,4 +28,15 @@
         <url-pattern>/reservation</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>TicketServlet</servlet-name>
+        <servlet-class>Servlet.TicketServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TicketServlet</servlet-name>
+        <url-pattern>/ticket</url-pattern>
+    </servlet-mapping>
+
 </web-app>
