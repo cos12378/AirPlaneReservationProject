@@ -15,13 +15,14 @@ public class MainServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        req.getRequestDispatcher("views/main.jsp").forward(req, resp);
+        //super.doGet(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        MainModule module = ModuleManager.getInstance().getMainModuleByNowMobule();
-
-        super.doPost(req, resp);
+        ReservationModule module = ModuleManager.getInstance().getReservationModuleByNowMobule();
+        module.getAirPlaneList_by_Database();
+        //super.doPost(req, resp);
     }
 }

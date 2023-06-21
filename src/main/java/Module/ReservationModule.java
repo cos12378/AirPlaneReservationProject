@@ -56,7 +56,7 @@ public class ReservationModule extends ModuleBase {
         }
     }
 
-    private void getAirPlaneList_by_Database() {
+    public void getAirPlaneList_by_Database() {
         //비행기 목록 clear
         airplaneList.clear();
 
