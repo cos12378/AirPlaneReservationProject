@@ -13,7 +13,7 @@
         <form action="/login" method="post">
             <h2 class="text-center"><strong>Airplane Reservation</strong></h2>
             <div class="form-group">
-                <input class="form-control" type="Username" name="username" placeholder="Username">
+                <input class="form-control" type="username" name="username" placeholder="Username">
             </div>
 
             <div class="form-group">

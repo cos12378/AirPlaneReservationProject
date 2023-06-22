@@ -57,7 +57,7 @@
         String loginID = "";
         Cookie[] cookies = request.getCookies();
         for (int i = 0; i < cookies.length; i++) {
-            if (cookies[i].getName().equals("LoginID")) {
+            if (cookies[i].getName().equals("loginID")) {
                 isLogin = true;
                 loginID = cookies[i].getValue();
             }

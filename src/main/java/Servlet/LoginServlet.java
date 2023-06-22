@@ -37,8 +37,8 @@ public class LoginServlet extends HttpServlet {
         if (loggedIn) {
             req.setAttribute("username",username);
             req.setAttribute("password", password);
-            resp.addCookie(new Cookie("LoginID", username));
-            req.getRequestDispatcher("views/main.jsp").forward(req, resp);
+            resp.addCookie(new Cookie("loginID", username));
+            resp.sendRedirect("views/main.jsp");
         } else {
             req.getRequestDispatcher("views/fail.jsp").forward(req, resp);
         }
