@@ -18,4 +18,23 @@
     <url-pattern>/main</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>EditServlet</servlet-name>
+    <servlet-class>Servlet.EditServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>EditServlet</servlet-name>
+    <url-pattern>/edit</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>addAirplaneServlet</servlet-name>
+    <servlet-class>Servlet.addAirplaneServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>addAirplaneServlet</servlet-name>
+    <url-pattern>/addAirplane</url-pattern>
+  </servlet-mapping>
 </web-app>

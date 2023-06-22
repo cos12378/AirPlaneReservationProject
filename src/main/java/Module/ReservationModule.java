@@ -56,7 +56,7 @@ public class ReservationModule extends ModuleBase {
         }
     }
 
-    public void getAirPlaneList_by_Database() {
+    public List<Airplane> getAirPlaneList_by_Database() {
         //비행기 목록 clear
         airplaneList.clear();
 
@@ -89,6 +89,8 @@ public class ReservationModule extends ModuleBase {
         } catch (SQLException e) {
             System.out.println("sql close fail");
         }
+
+        return airplaneList;
     }
 
     private void reservationAirPlane_Step1() {
