@@ -15,18 +15,19 @@ public class JdbcConnection {
 
     private final String root = "root";
     //private final  String pw = "hyun2002";
-    private final String pw = "1q2w3e4r!!";
-    public Connection getJdbc(){
+    private final String pw = "hyun2002";
+
+    public Connection getJdbc() {
 
         Connection conn;
-        try{
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url, root, pw);
-        }catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
-        //System.out.println("연동 성공");
+        System.out.println("연동 성공");
         return conn;
     }
 }
