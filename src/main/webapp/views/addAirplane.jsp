@@ -38,22 +38,23 @@
 <h1>Add Airplane</h1>
 
 <div class="form-container">
-<form method="post" action="/addAirplane">
-    <label for="airplaneName">Airplane Name:</label>
-    <input type="text" id="airplaneName" name="airplaneName" required>
+    <form method="post" action="/addAirplane">
+        <label for="airplaneName">Airplane Name:</label>
+        <input type="text" id="airplaneName" name="airplaneName" required>
 
-    <label for="departureTime">Departure Time:</label>
-    <input type="text" id="departureTime" name="departureTime" required>
+        <label for="departureTime">Departure Time:</label>
+        <input type="datetime-local" id="departureTime" name="departureTime" required>
 
-    <label for="departureAirport">Departure Airport:</label>
-    <input type="text" id="departureAirport" name="departureAirport" required>
+        <label for="departureAirport">Departure Airport:</label>
+        <input type="text" id="departureAirport" name="departureAirport" required>
 
-    <label for="arrivalAirport">Arrival Airport:</label>
-    <input type="text" id="arrivalAirport" name="arrivalAirport" required>
+        <label for="arrivalAirport">Arrival Airport:</label>
+        <input type="text" id="arrivalAirport" name="arrivalAirport" required>
 
-    <input type="submit" value="Add Airplane">
-</form>
+        <input type="submit" value="Add Airplane">
+    </form>
 </div>
+
 
 <h2>Airplane List</h2>
 
