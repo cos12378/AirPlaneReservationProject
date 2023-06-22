@@ -34,7 +34,7 @@ public class SignupServlet extends HttpServlet {
             req.getRequestDispatcher("/success.jsp").forward(req, resp);
         } else {
             System.out.println("SUCCESS2");
-            req.getRequestDispatcher("/failure.jsp").forward(req, resp);
+            req.getRequestDispatcher("/fail.jsp").forward(req, resp);
 
         }
 

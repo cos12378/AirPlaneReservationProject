@@ -49,7 +49,6 @@
     </style>
 </head>
 <body>
-<<<<<<< HEAD
 <div class="overlay">
     <span>비행기 예약</span>
 </div>
@@ -78,4 +77,5 @@
     <a href="/signup">회원가입</a>
     <% } %>
 </div>
+</body>
 </html>

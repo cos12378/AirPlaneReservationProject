@@ -3,6 +3,7 @@ import Enums.ModuleType;
 import Module.*;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,9 +37,10 @@ public class LoginServlet extends HttpServlet {
         if (loggedIn) {
             req.setAttribute("username",username);
             req.setAttribute("password", password);
-            req.getRequestDispatcher("success.css").forward(req, resp);
+            resp.addCookie(new Cookie("LoginID", username));
+            req.getRequestDispatcher("views/main.jsp").forward(req, resp);
         } else {
-            req.getRequestDispatcher("failure.jsp").forward(req, resp);
+            req.getRequestDispatcher("views/fail.jsp").forward(req, resp);
         }
     }
 
