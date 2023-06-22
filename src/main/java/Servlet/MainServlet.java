@@ -26,11 +26,9 @@ public class MainServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-<<<<<<< HEAD
-=======
 
         ReservationModule module = ModuleManager.getInstance().getReservationModuleByNowMobule();
->>>>>>> feature/sj
+
         //super.doPost(req, resp);
 
     }

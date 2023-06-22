@@ -89,10 +89,7 @@ public class ReservationModule extends ModuleBase {
         } catch (SQLException e) {
             System.out.println("sql close fail");
         }
-<<<<<<< HEAD
 
-=======
->>>>>>> feature/sj
         return airplaneList;
     }
 

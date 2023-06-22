@@ -56,14 +56,9 @@ public class ModuleManager {
                 break;
         }
 
-<<<<<<< HEAD
+
         if (nowModule != null)
             nowModule.init();
-=======
-        if (nowModule != null) {
-            nowModule.init();
-        }
->>>>>>> feature/sj
     }
 
     public ModuleType getNowModuleType() {
