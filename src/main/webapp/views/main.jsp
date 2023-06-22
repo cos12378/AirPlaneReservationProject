@@ -62,23 +62,13 @@
                 isLogin = true;
                 loginID = cookies[i].getValue();
             }
-=======
-<h1>메인페이지</h1>
-<%
-    boolean isLogin = false;
-    String loginID = "";
-    Cookie[] cookies = request.getCookies();
-    for (int i = 0; i < cookies.length; i++) {
-        if (cookies[i].getName().equals("LoginID")) {
-            isLogin = true;
-            loginID = cookies[i].getValue();
->>>>>>> feature/sj
         }
-    }
+    %>
 
-<<<<<<< HEAD
-        if (isLogin) { %>
+<%if (isLogin) { %>
     <a href="/reservation">예약</a>
+    <br>
+    <a href="/ticket">티켓</a>
     <br>
     <% } else if (isLogin == true && loginID.isEmpty() == false && loginID.equals("admin")) { %>
     <a href="/edit">개발자 페이지</a>
@@ -88,27 +78,4 @@
     <a href="/signup">회원가입</a>
     <% } %>
 </div>
-=======
-    if (isLogin) {%>
-<a href="/reservation">예약</a>
-<br>
-<a href="/ticket">티켓</a>
-<br>
-<%
-} else if (isLogin == true && loginID.isEmpty() == false
-        && loginID.equals("admin")) { %>
-<a href="/edit">개발자 페이지</a>
-<% } else if (isLogin == false) { %>
-<a href="/login">로그인</a>
-<br>
-<a href="/signup">회원가입</a>
-<br>
-<a href="/reservation">예약</a>
-<br>
-<a href="/ticket">티켓</a>
-<%
-    }
-%>
->>>>>>> feature/sj
-</body>
 </html>
