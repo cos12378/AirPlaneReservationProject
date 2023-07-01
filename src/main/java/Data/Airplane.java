@@ -1,6 +1,7 @@
 package Data;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ public class Airplane {
     //비행기 이름
     private String airplaneName;
     //출발시간
-    private Date departureTime;
+    private Timestamp departureTime;
     //출발지
     private String startDestination;
     //도착지
@@ -18,7 +19,7 @@ public class Airplane {
     //    좌석 리스트 생성
     public List<String> seatList;
 
-    public Airplane(int id, String airplaneName, Date departureTime, String startDestination, String endDestination, int totalRows, int seatsPerRow) {
+    public Airplane(int id, String airplaneName, Timestamp departureTime, String startDestination, String endDestination, int totalRows, int seatsPerRow) {
         this.id = id;
         this.airplaneName = airplaneName;
         this.departureTime = departureTime;
@@ -50,7 +51,7 @@ public class Airplane {
         return airplaneName;
     }
 
-    public Date getDepartureTime() {
+    public Timestamp getDepartureTime() {
         return departureTime;
     }
 

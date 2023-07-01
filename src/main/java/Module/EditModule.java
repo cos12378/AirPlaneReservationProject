@@ -86,7 +86,7 @@ public class EditModule extends ModuleBase {
                 // 컬럼명으로 읽어와서 생성
                 int id = rst.getInt("id");
                 String airplane_name = rst.getString("airplane_name");
-                Date departure_time = rst.getDate("departure_time");
+                Timestamp departure_time = rst.getTimestamp("departure_time");
                 String start_destination = rst.getString("start_destination");
                 String end_destination = rst.getString("end_destination");
 
@@ -119,7 +119,7 @@ public class EditModule extends ModuleBase {
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, airplaneName);
-            pst.setDate(2, Date.valueOf(date));
+            pst.setTimestamp(2, Timestamp.valueOf(date));
             pst.setString(3, startDestination);
             pst.setString(4, endDestination);
 

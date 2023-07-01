@@ -21,24 +21,25 @@ public class SignupServlet extends HttpServlet {
         String name = req.getParameter("name");
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-//        String passwordConfirm = req.getParameter("password_confirm");
+        String passwordConfirm = req.getParameter("password_confirm");
 
-        LoginModule signModule = getLoginModule();
-        System.out.println("fail");
-        boolean signUp = signModule.signup(username, password, name);
-        System.out.println("SUCCESS");
-        if (signUp) {
-            req.setAttribute("username",username);
-            req.setAttribute("password", password);
-            req.setAttribute("name", name);
-            req.getRequestDispatcher("/success.jsp").forward(req, resp);
-        } else {
-            System.out.println("SUCCESS2");
-            req.getRequestDispatcher("/fail.jsp").forward(req, resp);
-
+        if (!password.equals(passwordConfirm)) {
+            req.getRequestDispatcher("views/fail.jsp").forward(req, resp);
+            return;
         }
 
-//        super.doPost(req, resp);
+        // getLoginModule() 메서드가 LoginModule 객체를 반환하는 가정하에 진행
+        LoginModule signModule = getLoginModule();
+        boolean signUp = signModule.signup(username, password, name);
+
+        if (signUp) {
+            req.setAttribute("username", username);
+            req.setAttribute("password", password);
+            req.setAttribute("name", name);
+            req.getRequestDispatcher("views/success.jsp").forward(req, resp);
+        } else {
+            req.getRequestDispatcher("views/fail.jsp").forward(req, resp);
+        }
     }
 
     private LoginModule getLoginModule(){

@@ -32,7 +32,13 @@ public class ReservationServlet extends HttpServlet {
 
         req.setAttribute("airplaneList", module.getAirPlaneList_by_Database());
 //        req.getRequestDispatcher("views/airplaneList.jsp").forward(req, resp);
-        resp.addCookie(new Cookie("LoginID", "test"));
+        Cookie[] cookies = req.getCookies();
+        String userID = "";
+        for (int i = 0; i < cookies.length; i++) {
+            if (cookies[i].getName().equals("LoginID"))
+                userID = cookies[i].getValue();
+        }
+        resp.addCookie(new Cookie("LoginID", userID));
         req.getRequestDispatcher("views/airplaneList.jsp").forward(req, resp);
 
 

@@ -89,45 +89,50 @@ public class LoginModule extends ModuleBase{
     }
 
 
-    public boolean signup(String username, String password, String name) { //signup 메소드로 id pw 이름를 입력받음
-        Connection conn = new JdbcConnection().getJdbc();
+    public boolean signup(String username, String password, String name) {
+        Connection conn = null;
+        PreparedStatement selectStmt = null;
+        PreparedStatement insertStmt = null;
 
-        LoginView loginView = new LoginView();
+        try {
+            conn = new JdbcConnection().getJdbc();
 
-        LoginView.printsignView1();
-        LoginView.printsignView2();
-        this.username = username;
-        LoginView.printsignView3();
-        this.password = password;
-        LoginView.printsignView4();
-        this.name = name;
+            LoginView loginView = new LoginView();
+            LoginView.printsignView1();
+            LoginView.printsignView2();
+            this.username = username;
+            LoginView.printsignView3();
+            this.password = password;
+            LoginView.printsignView4();
+            this.name = name;
 
-        if (!isPasswordValid(password)) { // 패스워드가 유효를 메소드에서 검사함 (참인지것지인지)
-            System.out.println("ERROR: 비밀번호가 적어도 한개 이상의 특수문자와 대문자를 포함해야 합니다.");
-            return false;
-        }else{System.out.println("사용가능한 비밀번호입니다!");
-        }
+            if (!isPasswordValid(password)) {
+                System.out.println("ERROR: 비밀번호가 적어도 한 개 이상의 특수문자와 대문자를 포함해야 합니다.");
+                return false;
+            } else {
+                System.out.println("사용 가능한 비밀번호입니다!");
+            }
 
-        try {   //RreparedStatement클래스인 selectpsmt 인스턴스를 생성하고 천번째 매개변수에 username을 셋해줌
-            PreparedStatement selectStmt = conn.prepareStatement(selectSql);    //그리고, ResultSet 클래스인 resultSet변수에 psmt의 쿼리문을 실행하여 결과를 저장함
+            // 사용자가 이미 존재하는지 검사
+            selectStmt = conn.prepareStatement(selectSql);
             selectStmt.setString(1, username);
             ResultSet resultSet = selectStmt.executeQuery();
 
-            if (resultSet.next()) { ////resultSet의 다음으로 오는 값 즉, 초기값이 쿼리에 있는 username이 db에 있다면 if문 실행하고 if문 종료
+            if (resultSet.next()) {
                 System.out.println("ERROR: 유저가 이미 존재합니다!");
                 return false;
             }
 
-            // 유저 생성: sql에서 받아온 (username, password, name)을 insertStmt로 선언
-            PreparedStatement insertStmt = conn.prepareStatement(insertSql);
-            insertStmt.setString(1, username); // 여기서 username == id라고 보면됨
+            // 새로운 사용자 등록
+            insertStmt = conn.prepareStatement(insertSql);
+            insertStmt.setString(1, username);
             insertStmt.setString(2, password);
             insertStmt.setString(3, name);
-            int rowsAffected = insertStmt.executeUpdate(); // 몇개의 행이 업데이트 되었는지 rowsAffected에 저장
+            int rowsAffected = insertStmt.executeUpdate();
 
-            if (rowsAffected > 0) { // 0보다 크다면 기존 db에 없는것이므로 등록 성공, 0보다 작다면 변경사항이 없으므로 등록 실패
+            if (rowsAffected > 0) {
                 System.out.println("유저 등록 성공!");
-
+                return true;
             } else {
                 System.out.println("ERROR: 유저 등록 실패!");
                 return false;
@@ -135,7 +140,14 @@ public class LoginModule extends ModuleBase{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
-            try {   //DB 내용이 null이 아니라면 DB연결을 종료하겠음
+            // 리소스 정리
+            try {
+                if (insertStmt != null) {
+                    insertStmt.close();
+                }
+                if (selectStmt != null) {
+                    selectStmt.close();
+                }
                 if (conn != null) {
                     conn.close();
                 }
@@ -143,9 +155,8 @@ public class LoginModule extends ModuleBase{
                 throw new RuntimeException(e);
             }
         }
-
-        return false;
     }
+
 
     private boolean isPasswordValid(String password) { //비밀번호가 반드시 한개의 특수문자나 대문자를 포함하는지 불린 메소드로 생성
         // Password must contain at least one special character and one uppercase letter

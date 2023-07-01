@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
             resp.addCookie(new Cookie("loginID", username));
             resp.sendRedirect("views/main.jsp");
         } else {
-            req.getRequestDispatcher("views/fail.jsp").forward(req, resp);
+            req.getRequestDispatcher("/views/fail.jsp").forward(req, resp);
         }
     }
 

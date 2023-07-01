@@ -1,5 +1,6 @@
 package Data;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Ticket {
@@ -10,7 +11,7 @@ public class Ticket {
     //비행기 이름
     private String airplaneName;
     //출발시간
-    private Date departureTime;
+    private Timestamp departureTime;
     //줄발지
     private String startDestination;
     //도착지
@@ -18,7 +19,7 @@ public class Ticket {
 
     private String seat;
 
-    public Ticket(int ticketNumber, String userID, String airplaneName, Date departureTime, String startDestination, String endDestination, String seat) {
+    public Ticket(int ticketNumber, String userID, String airplaneName, Timestamp departureTime, String startDestination, String endDestination, String seat) {
         this.ticketNumber = ticketNumber;
         this.userID = userID;
         this.airplaneName = airplaneName;
@@ -40,7 +41,7 @@ public class Ticket {
         return airplaneName;
     }
 
-    public Date getDepartureTime() {
+    public Timestamp getDepartureTime() {
         return departureTime;
     }
 

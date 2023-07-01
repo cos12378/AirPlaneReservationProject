@@ -70,7 +70,7 @@ public class ReservationModule extends ModuleBase {
                 //컬럼 명으로 읽어와서 생성
                 int id = rst.getInt("id");
                 String name = rst.getString("airplane_name");
-                Date departure_time = rst.getDate("departure_time");
+                Timestamp departure_time = rst.getTimestamp("departure_time");
                 String start_destination = rst.getString("start_destination");
                 String end_destination = rst.getString("end_destination");
                 //Date date = new Date(2023, 6, 10);
@@ -155,7 +155,7 @@ public class ReservationModule extends ModuleBase {
                 PreparedStatement ticketPst = conn.prepareStatement(ticketSql);
                 ticketPst.setString(1, userID);
                 ticketPst.setString(2, air.getAirplaneName());
-                ticketPst.setDate(3, air.getDepartureTime());
+                ticketPst.setTimestamp(3, air.getDepartureTime());
                 ticketPst.setString(4, air.getStartDestination());
                 ticketPst.setString(5, air.getEndDestination());
                 ticketPst.setString(6, seatName);
@@ -211,7 +211,7 @@ public class ReservationModule extends ModuleBase {
                 int ticketNumber = rst.getInt("ticket_number");
                 String userid = rst.getString("userid");
                 String airplaneName = rst.getString("airplane_name");
-                Date departure_time = rst.getDate("departure_time");
+                Timestamp departure_time = rst.getTimestamp("departure_time");
                 String start_destination = rst.getString("start_destination");
                 String end_destination = rst.getString("end_destination");
                 String seat = rst.getString("seat_name");
