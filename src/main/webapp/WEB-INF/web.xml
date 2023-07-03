@@ -109,4 +109,14 @@
     <url-pattern>/forgot</url-pattern>
   </servlet-mapping>
 
+    <servlet>
+        <servlet-name>logoutServlet</servlet-name>
+        <servlet-class>Servlet.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>logoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
 </web-app>

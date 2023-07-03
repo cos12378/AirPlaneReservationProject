@@ -65,6 +65,7 @@
     %>
 
 <%if (isLogin) { %>
+    <a href="/logout">로그아웃</a>
     <a href="/reservation">예약</a>
     <br>
     <a href="/ticket">티켓</a>
