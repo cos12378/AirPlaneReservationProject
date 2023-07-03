@@ -99,19 +99,7 @@
     <url-pattern>/signup</url-pattern>
   </servlet-mapping>
 
-    <servlet>
-        <servlet-name>logoutServlet</servlet-name>
-        <servlet-class>Servlet.LogoutServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>logoutServlet</servlet-name>
-        <url-pattern>/logout</url-pattern>
-    </servlet-mapping>
-
-
-
-    <servlet>
+  <servlet>
     <servlet-name>forgotServlet</servlet-name>
     <servlet-class>Servlet.ForgotServlet</servlet-class>
   </servlet>

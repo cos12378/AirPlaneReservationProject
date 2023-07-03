@@ -43,10 +43,10 @@ public class ReservationServlet extends HttpServlet {
         Cookie[] cookies = req.getCookies();
         String userID = "";
         for (int i = 0; i < cookies.length; i++) {
-            if (cookies[i].getName().equals("LoginID"))
+            if (cookies[i].getName().equals("loginID"))
                 userID = cookies[i].getValue();
         }
-        resp.addCookie(new Cookie("LoginID", userID));
+        resp.addCookie(new Cookie("loginID", userID));
 
 //        resp.addCookie(new Cookie("LoginID", "test"));
 
@@ -73,7 +73,7 @@ public class ReservationServlet extends HttpServlet {
         String userID = "";
 
         for (int i = 0; i < cookies.length; i++) {
-            if (cookies[i].getName().equals("LoginID"))
+            if (cookies[i].getName().equals("loginID"))
                 userID = cookies[i].getValue();
         }
 

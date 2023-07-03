@@ -36,7 +36,7 @@ public class TicketServlet extends HttpServlet {
         String userID = "";
 
         for (int i = 0; i < cookies.length; i++) {
-            if (cookies[i].getName().equals("LoginID"))
+            if (cookies[i].getName().equals("loginID"))
                 userID = cookies[i].getValue();
         }
 
