@@ -27,10 +27,18 @@ public class ReservationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        // ModuleManager 의 인스턴스를 얻어온 후, changeModule 메서드를 호출하여 RESERVATION 모듈로 변경
         ModuleManager.getInstance().changeModule(ModuleType.RESERVATION);
+
+        // ModuleManager 의 인스턴스를 얻어온 후, getReservationModuleByNowModule 메서드를 호출
+        // 현재 모듈의 ReservationModule 인스턴스를 가져온다
+        // module 변수에 현재 실행 중인 예약 모듈의 인스턴스가 저장된다.
         ReservationModule module = ModuleManager.getInstance().getReservationModuleByNowMobule();
 
+        // getAirPlaneList_by_Database() 메서드를 실행하여 데이터베이스로부터 비행기 목록을 가져와 데이터를 반환
         req.setAttribute("airplaneList", module.getAirPlaneList_by_Database());
+
 //        req.getRequestDispatcher("views/airplaneList.jsp").forward(req, resp);
         Cookie[] cookies = req.getCookies();
         String userID = "";
@@ -39,6 +47,11 @@ public class ReservationServlet extends HttpServlet {
                 userID = cookies[i].getValue();
         }
         resp.addCookie(new Cookie("LoginID", userID));
+
+//        resp.addCookie(new Cookie("LoginID", "test"));
+
+        // 현재 요청을 airplaneList.jsp로 전달
+
         req.getRequestDispatcher("views/airplaneList.jsp").forward(req, resp);
 
 
@@ -46,33 +59,41 @@ public class ReservationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-// Step 1: Retrieve form data
 
-        String airplaneName = req.getParameter("airplaneName");
-        String seatName = req.getParameter("seatName");
-
-        // Step 2: Call the reservationAirPlane_Step2 method
+        // ModuleManager 의 인스턴스를 얻어온 후, changeModule 메서드를 호출하여 RESERVATION 모듈로 변경
         ModuleManager.getInstance().changeModule(ModuleType.RESERVATION);
+
+        // ModuleManager 의 인스턴스를 얻어온 후, getReservationModuleByNowModule 메서드를 호출
+        // 현재 모듈의 ReservationModule 인스턴스를 가져온다
+        // module 변수에 현재 실행 중인 예약 모듈의 인스턴스가 저장된다.
         ReservationModule module = ModuleManager.getInstance().getReservationModuleByNowMobule();
+
+        // 요청에 포함된 쿠키들 중에서 이름이 "LoginID"인 쿠키의 값을 가져와 userID 변수에 저장
         Cookie[] cookies = req.getCookies();
         String userID = "";
+
         for (int i = 0; i < cookies.length; i++) {
             if (cookies[i].getName().equals("LoginID"))
                 userID = cookies[i].getValue();
         }
-        // Pass the form data to the reservationAirPlane_Step2 method
+
+        // 요청한 정보를 가져와 변수에 저장
+        String airplaneName = req.getParameter("airplaneName");
+        String seatName = req.getParameter("seatName");
+
+        // reservationAirPlane_Step2() 메서드의 비행기 이름, 좌석 이름, 유저 아이디를 인자로 전달하여 비행기 예약 작업 실행
         module.reservationAirPlane_Step2(airplaneName, seatName, userID);
-        // Retrieve the seat list
+
+        // getSeats_by_Database() 메서드의 비행기 이름을 인자로 전달하여 해당 비행기의 좌석 목록 데이터 반환
         List<Seat> seatList = module.getSeats_by_Database(airplaneName);
+
+        // seatList를 jsp로 전달
         req.setAttribute("seatList2", seatList);
-        // Redirect to the appropriate page
-        // Set confirmation message in request attribute
+
+        // message를 jsp로 전달
         req.setAttribute("message", "Your reservation has been confirmed!");
 
-        // Redirect to the confirmation page
+        // 현재 요청을 confirmation.jsp로 전달
         req.getRequestDispatcher("views/confirmation.jsp").forward(req, resp);
     }
-
-//        super.doPost(req, resp);
-//    }
 }
